@@ -22,8 +22,8 @@ var server = http.createServer(app);
 const io = require('socket.io')(server);
 const PeerServer = require('peer').PeerServer;
 PeerServer({
-  port: 9000,
-  path: '/peerjs',
+  port: process.env.PORT_PEER,
+  path: process.env.PATH_PEER,
 }); // Initialize peer server for peerjs client
 
 io.on('connection', (socket) => {
