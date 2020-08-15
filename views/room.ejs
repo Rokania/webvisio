@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Room</title>
+	<link href="stylesheets/style.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
+		integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA=="
+		crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+</head>
+
+<body>
+	<div id="videos">
+
+	</div>
+</body>
+<script>
+	const roomId = '<%- roomId %>';
+	const peerConfig = JSON.parse('<%- peerConfig %>');
+</script>
+<script src="javascripts/main.js"></script>
+
+</html>

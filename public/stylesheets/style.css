@@ -1,0 +1,17 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #23272A
+}
+
+#videos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+video {
+  height: 300px;
+  width: 300px;
+}
