@@ -22,7 +22,7 @@ function addVideo(videoComponent, stream) {
 }
 
 function initializeSocket() {
-	let socket = io();
+    let socket = io('https://webvisio.romain-kania.fr');
 	socket.on('connect', (_ => {
 		clientId = socket.id;
 		initializePeer();
@@ -45,7 +45,7 @@ function initializeSocket() {
 }
 
 function initializePeer() {
-	peer = new Peer(clientId, peerConfig);
+    peer = new Peer(clientId, {HOST_PEER:peerConfig.HOST_PEER, PATH_PEER:peerConfig.PATH_PEER});
 	peer.on('open', (id) => {
 	});
 	peer.on('call', function (call) {

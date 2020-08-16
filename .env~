@@ -1,0 +1,4 @@
+PORT=8000
+HOST_PEER=webvisio.romain-kania.fr
+PORT_PEER=8001
+PATH_PEER=/peerjs
