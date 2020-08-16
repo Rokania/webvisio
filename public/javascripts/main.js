@@ -1,6 +1,7 @@
 let clientId;
 let peer;
 let videoStream;
+let myVideoComponent;
 let videoComponents = {};
 
 async function getUserMedia() {
@@ -8,7 +9,9 @@ async function getUserMedia() {
 		video: true,
 		audio: true
 	});
-	addVideo(document.createElement('video'), videoStream);
+	myVideoComponent = document.createElement('video');
+	myVideoComponent.muted = true;
+	addVideo(myVideoComponent, videoStream);
 	initializeSocket();
 }
 
@@ -22,7 +25,7 @@ function addVideo(videoComponent, stream) {
 }
 
 function initializeSocket() {
-    let socket = io('https://webvisio.romain-kania.fr');
+    let socket = io(socketConfig.host);
 	socket.on('connect', (_ => {
 		clientId = socket.id;
 		initializePeer();
@@ -45,7 +48,7 @@ function initializeSocket() {
 }
 
 function initializePeer() {
-    peer = new Peer(clientId, {HOST_PEER:peerConfig.HOST_PEER, PATH_PEER:peerConfig.PATH_PEER});
+    peer = new Peer(clientId, {HOST_PEER:peerConfig.host, PATH_PEER:peerConfig.path});
 	peer.on('open', (id) => {
 	});
 	peer.on('call', function (call) {
