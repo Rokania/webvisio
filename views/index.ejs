@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>WebVisio</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <form method="POST" action="/">
-      <input type="submit" value="Créer un salon">
-    </form>
-  </body>
+
+<head>
+  <title>WebVisio</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="create-or-join-room">
+    <div class="create-room">
+      <h3>Let's create a room</h3>
+      <form method="POST" action="/">
+        <input type="submit" value="Create a room">
+      </form>
+    </div>
+    <div class="join-room">
+      <h3>Or join one</h3>
+      <div class="input-join-room">
+        <input id="input-roomId" type="text" name="roomId" placeholder="Put your room id here...">
+        <a id="btn-join-room" href="#">Join</a>
+      </div> 
+    </div>
+  </div>
+
+</body>
+<script src="javascripts/index.js"></script>
 </html>

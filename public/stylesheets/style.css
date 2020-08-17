@@ -1,7 +1,14 @@
+html, body {
+    height: 100%;
+}
 body {
   padding: 0;
   margin: 0;
-  background-color: #23272A
+  background-color: #23272A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #videos {
@@ -14,4 +21,48 @@ body {
 video {
   height: 300px;
   width: 300px;
+}
+
+.create-or-join-room {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 40px;
+  color: white;
+  width: 40vw;
+  border-radius: 20px;
+  background-color: #131313cb;
+}
+
+.create-room input {
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+input[type='submit'] {
+  cursor: pointer;
+}
+
+#input-roomId {
+  width: 40%;
+}
+
+.input-join-room{
+  display: flex;
+  align-items: center;
+}
+
+.input-join-room input {
+  margin-right: 20px;
+  padding: 10px;
+  font-size: 15px;
+
+}
+
+.input-join-room a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 17px;
 }
