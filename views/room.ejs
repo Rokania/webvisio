@@ -10,12 +10,22 @@
 		integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA=="
 		crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+	<script src="https://kit.fontawesome.com/d2a3db6dcd.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<div id="videos">
+  <main>
+		<div id="videos">
 
-	</div>
+		</div>
+		<div class="dock">
+			<div id="dock-icons">
+				<i id="btn-show-video" class="fas fa-video"></i>
+				<i id="btn-mute-audio" class="fas fa-microphone"></i>
+				<i id="btn-exit" class="fas fa-door-closed"></i>
+			</div>
+		</div>
+	</main>
 </body>
 <script>
 	const roomId = '<%- roomId %>';
