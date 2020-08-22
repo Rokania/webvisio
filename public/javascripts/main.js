@@ -59,7 +59,7 @@ function initializeSocket() {
 }
 
 function initializePeer() {
-	peer = new Peer(clientId, { HOST_PEER: peerConfig.host, PATH_PEER: peerConfig.path });
+	peer = new Peer(clientId, { HOST_PEER: peerConfig.host, PATH_PEER: peerConfig.path, serialization: "json" });
 	peer.on('open', (id) => {
 	});
 	peer.on('call', function (call) {
