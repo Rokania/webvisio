@@ -29,6 +29,9 @@ function addVideo(videoComponent, stream) {
 	videoComponent.addEventListener('loadedmetadata', (_) => {
 		videoComponent.play();
 	})
+	setTimeout(_ => {
+		videoComponent.play();
+	}, 2000);
 	videos.append(videoComponent);
 }
 
