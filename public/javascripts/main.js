@@ -1,5 +1,6 @@
 let clientId;
 let peer;
+let socket;
 let myVideoStream;
 let myVideoComponent;
 let videoComponents = {};
@@ -8,6 +9,8 @@ let isMute = false;
 let btnShowVideo = document.getElementById('btn-show-video');
 let btnMuteAudio = document.getElementById('btn-mute-audio');
 let btnExit = document.getElementById('btn-exit');
+let chatList = document.getElementById('chat-list');
+let inputMessage = document.getElementById('chat-input-text');
 
 async function getUserMedia() {
 	myVideoStream = await navigator.mediaDevices.getUserMedia({
@@ -30,11 +33,14 @@ function addVideo(videoComponent, stream) {
 }
 
 function initializeSocket() {
-    let socket = io(socketConfig.host);
+	socket = io(socketConfig.host);
 	socket.on('connect', (_ => {
 		clientId = socket.id;
 		initializePeer();
 		socket.emit('joinRoom', { roomId });
+		socket.on('newMessage', ({username, message}) => {
+			addMessageToChat(username, message);
+		})
 		socket.on('userConnected', (userId) => {
 			const call = peer.call(userId, myVideoStream); // Fait un appel au nouveau user
 			const videoComponent = document.createElement('video');
@@ -53,7 +59,7 @@ function initializeSocket() {
 }
 
 function initializePeer() {
-    peer = new Peer(clientId, {HOST_PEER:peerConfig.host, PATH_PEER:peerConfig.path});
+	peer = new Peer(clientId, { HOST_PEER: peerConfig.host, PATH_PEER: peerConfig.path });
 	peer.on('open', (id) => {
 	});
 	peer.on('call', function (call) {
@@ -99,6 +105,26 @@ btnMuteAudio.onclick = () => {
 
 btnExit.onclick = () => {
 	window.location.href = '/';
+}
+
+inputMessage.addEventListener('keyup', ({ key, keyCode }) => {
+	const message = inputMessage.value;
+	if ((key === 'Enter' || keyCode === 13)) {
+		inputMessage.value = '';
+		if (message.length > 1) {
+			addMessageToChat(clientId, message);
+			socket.emit('newMessage', {username: clientId, message});
+		}
+	}
+});
+
+function addMessageToChat(username, content) {
+	const chatMessage = document.createElement('div');
+	chatMessage.classList.add('chat-message');
+	chatMessage.insertAdjacentHTML('afterbegin', `<div class="chat-message-author">${username}</div>`);
+	chatMessage.insertAdjacentHTML('beforeend', `<div class="chat-message-content">${content}</div>`);
+	chatList.appendChild(chatMessage);
+	chatList.scrollTop = chatList.scrollHeight;
 }
 
 getUserMedia();

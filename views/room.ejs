@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Room</title>
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lora" />
 	<link href="stylesheets/style.css" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
 		integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA=="
@@ -15,16 +16,28 @@
 
 <body>
   <main>
-		<div id="videos">
+		<section id="visio">
+			<div id="videos">
 
-		</div>
-		<div class="dock">
-			<div id="dock-icons">
-				<i id="btn-show-video" class="fas fa-video"></i>
-				<i id="btn-mute-audio" class="fas fa-microphone"></i>
-				<i id="btn-exit" class="fas fa-door-closed"></i>
 			</div>
-		</div>
+			<div class="dock">
+				<div id="dock-icons">
+					<i id="btn-show-video" class="fas fa-video"></i>
+					<i id="btn-mute-audio" class="fas fa-microphone"></i>
+					<i id="btn-exit" class="fas fa-door-closed"></i>
+				</div>
+			</div>
+		</section>
+		<section id="chat">
+			<header>
+				<h1>Chat</h1>
+				<p>Please know that new user will not see the old messages.</p>
+			</header>
+			<main id="chat-list">
+			</main>
+			<footer id="chat-input">
+				<textarea id="chat-input-text"placeholder="Type your message here ..."></textarea>
+		</section>
 	</main>
 </body>
 <script>
@@ -33,5 +46,4 @@
 	const socketConfig = JSON.parse('<%- socketConfig %>');
 </script>
 <script src="javascripts/main.js"></script>
-
 </html>

@@ -32,6 +32,9 @@ io.on('connection', (socket) => {
     currentRoomId = data.roomId;
     socket.join(currentRoomId);
     socket.to(currentRoomId).broadcast.emit('userConnected', socket.id);
+    socket.on('newMessage', message => {
+      socket.to(currentRoomId).broadcast.emit('newMessage', message);
+    })
   }));
   socket.on('disconnect', (_ => {
     socket.to(currentRoomId).broadcast.emit('userDisconnected', socket.id);
