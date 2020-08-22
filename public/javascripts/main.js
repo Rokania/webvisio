@@ -66,7 +66,8 @@ function initializePeer() {
 	peer.on('open', (id) => {
 	});
 	peer.on('call', function (call) {
-		const videoComponent = document.createElement('video');
+		let videoComponent = document.createElement('video');
+		videoComponent.controls = true;
 		videoComponents[call.peer] = videoComponent;
 		call.answer(myVideoStream);
 		call.on('stream', (mediaStream) => {
